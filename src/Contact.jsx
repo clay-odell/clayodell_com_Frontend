@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
+import { submitContactForm } from "../api";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -14,22 +16,30 @@ const Contact = () => {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      navigate("/");
-    }, 3000);
+    setError("");
+    try {
+      const response = await submitContactForm(formData);
+      if (response.message === "Form submitted successfully") {
+        setSubmitted(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 5000);
+      } else {
+        setError("Failed to submit form. Please try again.");
+      }
+    } catch (error) {
+      setError("An error occurred during form submission. Please try again.");
+    }
   };
 
   return (
@@ -48,109 +58,114 @@ const Contact = () => {
           </p>
           <section className="form">
             <form className="contact-form" onSubmit={handleSubmit}>
-              <label>
-                Name: <br />
+              <div className="mb-3">
+                <label className="form-label">Name:</label>
                 <input
                   type="text"
                   name="name"
+                  className="form-control form-control-lg"
                   placeholder="Enter your name here..."
                   value={formData.name}
                   onChange={handleChange}
                   required
                 />
-              </label>
-              <br />
-              <label>
-                Email: <br />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Email:</label>
                 <input
                   type="email"
                   name="email"
+                  className="form-control form-control-lg"
                   placeholder="youremail@email.com"
                   value={formData.email}
                   onChange={handleChange}
                   required
                 />
-              </label>
-              <br />
-              <label>
-                Phone: <br />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Phone:</label>
                 <input
                   type="tel"
                   name="phone"
+                  className="form-control form-control-lg"
                   placeholder="(123) 456-7890"
                   value={formData.phone}
                   onChange={handleChange}
                 />
-              </label>
-              <br />
-              <label>
-                Occupation: <br />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Occupation:</label>
                 <input
                   type="text"
                   name="occupation"
+                  className="form-control form-control-lg"
                   placeholder="Your occupation"
                   value={formData.occupation}
                   onChange={handleChange}
                 />
-              </label>
-              <br />
-              <label>
-                LinkedIn: <br />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">LinkedIn:</label>
                 <input
                   type="url"
                   name="linkedIn"
-                  placeholder="LinkedIn profile URL"
+                  className="form-control form-control-lg"
+                  placeholder="https://..."
                   value={formData.linkedIn}
                   onChange={handleChange}
                 />
-              </label>
-              <br />
-              <label>
-                GitHub: <br />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">GitHub:</label>
                 <input
                   type="url"
                   name="gitHub"
-                  placeholder="GitHub profile URL"
+                  className="form-control form-control-lg"
+                  placeholder="https://..."
                   value={formData.gitHub}
                   onChange={handleChange}
                 />
-              </label>
-              <br />
-              <label>
-                Social Media Handle/Profile: <br />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">
+                  Social Media Handle/Profile:
+                </label>
                 <input
-                  type="url"
+                  type="text"
                   name="socialMedia"
-                  placeholder="@handle or url.com"
+                  className="form-control form-control-lg"
+                  placeholder="@handle or https://"
                   value={formData.socialMedia}
                   onChange={handleChange}
                 />
-              </label>
-              <br />
-              <label>
-                Reason for Contact: <br />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Reason for Contact:</label>
                 <input
                   type="text"
                   name="reasonForContact"
+                  className="form-control form-control-lg"
                   placeholder="Why are you contacting me?"
                   value={formData.reasonForContact}
                   onChange={handleChange}
                   required
                 />
-              </label>
-              <br />
-              <label>
-                Detailed Message: <br />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Detailed Message:</label>
                 <textarea
                   name="message"
+                  className="form-control form-control-lg"
                   placeholder="Enter your message here..."
                   value={formData.message}
                   onChange={handleChange}
                   required
                 ></textarea>
-              </label>
-              <br />
-              <button type="submit">Submit</button>
+              </div>
+              {error && <div className="alert alert-danger">{error}</div>}
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
             </form>
           </section>
         </>
