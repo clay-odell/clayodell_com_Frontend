@@ -3,10 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/clayodell_com_Frontend/', // Correct base path
-  build: {
-    rollupOptions: {
-      input: './index.html', // Adjust path to index.html
-    },
-  },
+  base: '/clayodell_com_Frontend/',
 });
