@@ -1,5 +1,5 @@
 import Projects from "./Projects";
-import "./Resume.css";
+import "./styles/Resume.css";
 
 const Resume = ({ role }) => {
   const renderProfessionalSummary = (role) => {
