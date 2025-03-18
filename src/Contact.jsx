@@ -27,6 +27,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    console.log("Form Data:", formData);
     try {
       const response = await submitContactForm(formData);
       if (response.message === "Form submitted successfully") {
