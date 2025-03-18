@@ -1,7 +1,6 @@
 {
   "name": "clayodell-website",
   "private": true,
-  "homepage": "https//clay-odell.github.io/clayodell_com_Frontend",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

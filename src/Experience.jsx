@@ -3,7 +3,7 @@ import CV from "./CV";
 import Resume from "./Resume";
 import 'bootstrap/dist/css/bootstrap.css';
 const Experience = () => {
-  const [resumeOrCV, setResumeOrCV] = useState("");
+  const [CV, setCV] = useState("");
   const [role, setRole] = useState("");
   const [isRoleVisible, setIsRoleVisible] = useState(false);
 
@@ -18,7 +18,7 @@ const Experience = () => {
 
   const handleResumeChange = (e) => {
     const val = e.target.value;
-    setResumeOrCV(val);
+    setCV(val);
     setIsRoleVisible(true);
   };
 
@@ -31,7 +31,7 @@ const Experience = () => {
       <header>
         <img src="/Clay_Logo-Face.png" height="150px" width="150px" alt="Picture of Clay O'Dell" />
         <h1>
-          Clay O'Dell's Resumé/<em>Curriculum Vitae</em>
+          Clay O'Dell's <em>Curriculum Vitae</em>
         </h1>
         <div className="contact">
           <p className="centeredParagraphs">Contact Information:</p>
@@ -54,12 +54,11 @@ const Experience = () => {
       <section className="forms">
         <form>
           <label>
-            Resumé/<em>Curriculum Vitae</em>: <br />
-            <select value={resumeOrCV} onChange={handleResumeChange}>
+            <em>Curriculum Vitae</em>: <br />
+            <select value={CV} onChange={handleResumeChange}>
               <option value="" disabled>
                 Select...
               </option>
-              <option value="resume">Resumé</option>
               <option value="cv">Curriculum Vitae</option>
             </select>
           </label>
@@ -82,12 +81,12 @@ const Experience = () => {
         )}
       </section>
       <br />
-      {resumeOrCV === "cv" && role !== "" && (
+      {CV === "cv" && role !== "" && (
         <>
           <CV role={capitalizedRole} />
         </>
       )}
-      {resumeOrCV === "resume" && role !== "" && (
+      {CV === "resume" && role !== "" && (
         <>
           <Resume role={capitalizedRole} />
         </>
