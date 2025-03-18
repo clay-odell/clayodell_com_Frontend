@@ -1,0 +1,9 @@
+p.justified {
+    text-align: justify;
+}
+
+div.education {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

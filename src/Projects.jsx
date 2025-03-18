@@ -2,7 +2,7 @@ import { useState } from "react";
 const Projects = () => {
   return (
     <>
-      <h2>Projects</h2>
+      <h2>RELEVANT PROJECTS</h2>
       <ul>
         <li>
           <strong>Gig Match Calendar App</strong>
@@ -27,11 +27,12 @@ const Projects = () => {
           </li>
         </ul>
         <li>
+          <br />
           <strong>Dutch Bros Shift Checklist App</strong>
         </li>
         <p>
           This app is a "clicker" that assist a shift lead in their given shift
-          duties
+          duties. It solves the problem of not having to go to a posted checklist to accomplish shift tasks.
         </p>
         <ul>
           <li>

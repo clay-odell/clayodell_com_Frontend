@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import './styles/Home.css';
-
+import 'bootstrap/dist/css/bootstrap.css';
 const Home = () => {
   return (
     <Container className="text-center py-4">

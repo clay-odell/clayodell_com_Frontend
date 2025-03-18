@@ -2,8 +2,9 @@ import { useState } from "react";
 import CV from "./CV";
 import Resume from "./Resume";
 import 'bootstrap/dist/css/bootstrap.css';
+
 const Experience = () => {
-  const [CV, setCV] = useState("");
+  const [resumeOrCV, setResumeOrCV] = useState("");
   const [role, setRole] = useState("");
   const [isRoleVisible, setIsRoleVisible] = useState(false);
 
@@ -18,7 +19,7 @@ const Experience = () => {
 
   const handleResumeChange = (e) => {
     const val = e.target.value;
-    setCV(val);
+    setResumeOrCV(val);
     setIsRoleVisible(true);
   };
 
@@ -28,37 +29,46 @@ const Experience = () => {
 
   return (
     <>
-      <header>
-        <img src="/Clay_Logo-Face.png" height="150px" width="150px" alt="Picture of Clay O'Dell" />
-        <h1>
-          Clay O'Dell's <em>Curriculum Vitae</em>
-        </h1>
-        <div className="contact">
-          <p className="centeredParagraphs">Contact Information:</p>
-          <p>Phone: (706) 442-5058</p>
-          <p>Huntsville, Alabama</p>
-          <p>
-            <a href="mailto:clayodell@clayodell.com">clayodell@clayodell.com</a>
-          </p>
-
-          <p>
-            <a href="https://www.linkedin.com/in/clayodell/">
-              linkedin.com/in/clayodell
-            </a>
-          </p>
-          <p>
-            <a href="https://github.com/clay-odell">github.com/clay-odell</a>
-          </p>
-        </div>
-      </header>
+      {/* Conditionally render header only if resume is NOT selected */}
+      {resumeOrCV !== "resume" && (
+        <header>
+          <img
+            src="/Clay_Logo-Face.png"
+            height="150px"
+            width="150px"
+            alt="Picture of Clay O'Dell"
+          />
+          <h1>
+            Clay O'Dell's Resumé/<em>Curriculum Vitae</em>
+          </h1>
+          <div className="contact">
+            <p className="centeredParagraphs">Contact Information:</p>
+            <p>Phone: (706) 442-5058</p>
+            <p>Huntsville, Alabama</p>
+            <p>
+              <a href="mailto:clayodell@clayodell.com">clayodell@clayodell.com</a>
+            </p>
+            <p>
+              <a href="https://www.linkedin.com/in/clayodell/">
+                linkedin.com/in/clayodell
+              </a>
+            </p>
+            <p>
+              <a href="https://github.com/clay-odell">github.com/clay-odell</a>
+            </p>
+          </div>
+        </header>
+      )}
+      
       <section className="forms">
         <form>
           <label>
-            <em>Curriculum Vitae</em>: <br />
-            <select value={CV} onChange={handleResumeChange}>
+            Resumé/<em>Curriculum Vitae</em>: <br />
+            <select value={resumeOrCV} onChange={handleResumeChange}>
               <option value="" disabled>
                 Select...
               </option>
+              <option value="resume">Resumé</option>
               <option value="cv">Curriculum Vitae</option>
             </select>
           </label>
@@ -81,12 +91,12 @@ const Experience = () => {
         )}
       </section>
       <br />
-      {CV === "cv" && role !== "" && (
+      {resumeOrCV === "cv" && role !== "" && (
         <>
           <CV role={capitalizedRole} />
         </>
       )}
-      {CV === "resume" && role !== "" && (
+      {resumeOrCV === "resume" && role !== "" && (
         <>
           <Resume role={capitalizedRole} />
         </>
