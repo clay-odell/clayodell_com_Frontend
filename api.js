@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://82.29.198.28:3000';
+const API_URL = 'http://82.29.198.28:3000';
 
 const apiRequest = async (endpoint, method = 'GET', data = null) => {
   try {
@@ -23,7 +23,7 @@ const apiRequest = async (endpoint, method = 'GET', data = null) => {
 
     // Check if response is JSON
     try {
-      const result = JSON.parse(textResponse);
+      const result = await JSON.parse(textResponse);
       return result;
     } catch (parseError) {
       // Return plain text response if JSON parsing fails

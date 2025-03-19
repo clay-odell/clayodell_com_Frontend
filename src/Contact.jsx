@@ -45,9 +45,8 @@ const Contact = () => {
 
   return (
     <>
-    <h2>Coming soon...</h2>
-    <p>This page will be coming soon.</p>
-      {/* {submitted ? (
+    
+      {submitted ? (
         <h3>
           Thank you for making contact. If requested, a response will be coming
           soon.
@@ -172,7 +171,7 @@ const Contact = () => {
             </form>
           </section>
         </>
-      )} */}
+      )}
     </>
   );
 };
