@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import './styles/Home.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import StoicQuote from "./StoicQuote";
 const Home = () => {
   return (
     <Container className="text-center py-4">
@@ -17,10 +18,11 @@ const Home = () => {
             src="/Clay_Logo.png" 
             alt="Black And White Logo for Clay O'Dell" 
             className="spin-logo"
-            fluid // React Bootstrap's responsive image class
+            fluid 
           />
         </Col>
       </Row>
+      <StoicQuote />
     </Container>
   );
 };

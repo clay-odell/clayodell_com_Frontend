@@ -39,4 +39,8 @@ const submitContactForm = async (formData) => {
   return apiRequest('/contact/submit', 'POST', formData);
 };
 
+const getContactsInfo = async () => {
+  return apiRequest('/contact/contacts');
+}
+
 export { submitContactForm, apiRequest };
