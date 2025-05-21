@@ -60,9 +60,9 @@ const NavBar = () => {
               <Nav.Link as={Link} to="/projects">
                 Projects
               </Nav.Link>
-              <Nav.Link as={Link} to="/contact">
+              {/* <Nav.Link as={Link} to="/contact">
                 Contact
-              </Nav.Link>
+              </Nav.Link> */}
               <Nav.Link as={Link} to=""></Nav.Link>
             </Nav>
           </Navbar.Collapse>
