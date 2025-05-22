@@ -26,6 +26,7 @@ const Projects = () => {
             </li>
           </ul>
         </li>
+        <br />
         <li>
           <strong>Dutch Bros Shift Checklist App</strong>
           <p>
@@ -44,6 +45,7 @@ const Projects = () => {
             </li>
           </ul>
         </li>
+        <br />
         <li>
           <strong>Dr. Whateva Website App</strong>
           <p>
