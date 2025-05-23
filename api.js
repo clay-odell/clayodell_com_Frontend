@@ -1,4 +1,4 @@
-const API_URL = 'http://82.29.198.28:3000';
+const API_URL = import.meta.VITE_API_URL || 'https://api.clayodell.com/';
 
 const apiRequest = async (endpoint, method = 'GET', data = null) => {
   try {
