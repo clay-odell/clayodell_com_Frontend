@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css"; // Optional for styling
+import { adminLogin } from "../api"; 
+import "bootstrap/dist/css/bootstrap.css"; 
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ username: "", password: "" });
@@ -14,29 +15,21 @@ const AdminLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
+    setError("");
 
-    // Simple validation
     if (!credentials.username || !credentials.password) {
       setError("Both fields are required.");
       return;
     }
 
     try {
-      // Replace with your API endpoint
-      const response = await fetch("/api/admin/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(credentials),
-      });
+      const data = await adminLogin(credentials);
 
-      if (response.ok) {
-        const data = await response.json();
-        // Assuming the response contains a token
-        localStorage.setItem("authToken", data.token); // Save token for authentication
-        navigate("/admin/dashboard"); // Redirect on successful login
+      if (data.token) {
+        localStorage.setItem("authToken", data.token);
+        navigate("/admin/dashboard"); 
       } else {
-        setError("Invalid username or password.");
+        setError("Login failed. Please check your credentials.");
       }
     } catch (err) {
       setError("Something went wrong. Please try again.");
