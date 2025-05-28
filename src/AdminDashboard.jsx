@@ -17,7 +17,7 @@ const AdminDashboard = () => {
 
         const response = await getContactsInfo(token);
         if (response && response.contacts) {
-          setContacts(response.contacts); // Correctly extracting 'contacts' array
+          setContacts(response.contacts);
         } else {
           setError("Invalid API response format.");
         }
@@ -41,6 +41,7 @@ const AdminDashboard = () => {
               {contacts.map((contact) => (
                 <ListGroup.Item key={contact.id}>
                   <strong>{contact.name}</strong> - {contact.email}
+                  <p>{contact.message}</p>
                 </ListGroup.Item>
               ))}
             </ListGroup>
