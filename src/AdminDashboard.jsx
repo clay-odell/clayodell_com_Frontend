@@ -14,8 +14,13 @@ const AdminDashboard = () => {
           setError("Unauthorized: Please log in.");
           return;
         }
-        const data = await getContactsInfo(token);
-        setContacts(data);
+
+        const response = await getContactsInfo(token);
+        if (response && response.contacts) {
+          setContacts(response.contacts); // Correctly extracting 'contacts' array
+        } else {
+          setError("Invalid API response format.");
+        }
       } catch (err) {
         setError("Error fetching contacts.");
         console.error(err);
