@@ -52,4 +52,4 @@ const getAdminProfile = async (token) => {
   return apiRequest("/admin/profile", "GET", null, token);
 };
 
-export { submitContactForm, getContactsInfo, apiRequest, adminLogin, getAdminProfile };
+export { submitContactForm, getContactsInfo, apiRequest, userLogin, getAdminProfile };
