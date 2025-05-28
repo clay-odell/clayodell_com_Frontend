@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { adminLogin } from "../api"; 
+import { userLogin } from "../api"; 
 import "bootstrap/dist/css/bootstrap.css"; 
 
 const AdminLogin = () => {
