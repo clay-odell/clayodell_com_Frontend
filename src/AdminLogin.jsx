@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { adminLogin } from "../api"; 
 import "bootstrap/dist/css/bootstrap.css"; 
@@ -23,7 +23,7 @@ const AdminLogin = () => {
     }
 
     try {
-      const data = await adminLogin(credentials);
+      const data = await userLogin(credentials);
 
       if (data.token) {
         localStorage.setItem("authToken", data.token);

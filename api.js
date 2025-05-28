@@ -44,8 +44,8 @@ const getContactsInfo = async () => {
   return apiRequest("/contact/contacts");
 };
 
-const adminLogin = async (credentials) => {
-  return apiRequest("/admin/login", "POST", credentials);
+const userLogin = async (credentials) => {
+  return apiRequest("/users/login", "POST", credentials);
 };
 
 const getAdminProfile = async (token) => {
